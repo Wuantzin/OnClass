@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { sequelize } from "./Config/configDB.js";
-import routes from "./routes/index.js";
+import routes from "./Routes/index.js";
 
 dotenv.config();
 
@@ -15,7 +15,7 @@ app.use(express.json());
 
 
 //rotas
-app.use("./api", routes);
+app.use("/api", routes);
 
 
 // Conexão com o banco de dados
