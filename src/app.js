@@ -18,12 +18,32 @@ app.use(express.json());
 app.use("/api", routes);
 
 
-// Conexão com o banco de dados
-sequelize.authenticate()
-  .then(() => console.log("Conectado ao MySQL"))
-  .catch((err) => console.error("Erro ao conectar ao MySQL:", err));
+async function startServer() {
+  try {
+    // 1. Testa conexão
+    await sequelize.authenticate();
+    console.log("Conexão com banco estabelecida!");
+  } catch (error) {
+    console.error("Erro ao conectar com o banco:", error);
+    return; // se falhar aqui, nem adianta seguir
+  }
 
+  try {
+    // 2. Cria/sincroniza tabelas
+    await sequelize.sync( {alter: true}); // ou { alter: true }
+    console.log("Tabelas sincronizadas!");
+  } catch (error) {
+    console.error("Erro ao sincronizar tabelas:", error);
+    return;
+  }
 
-// Startando Servidor
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+  try {
+    // 3. Sobe o servidor
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+  } catch (error) {
+    console.error("Erro ao subir servidor:", error);
+  }
+}
+
+startServer();
