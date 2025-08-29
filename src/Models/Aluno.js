@@ -19,7 +19,7 @@ const Aluno = sequelize.define("Aluno", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    uuid: {
+    DeviceId: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true

@@ -6,12 +6,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config({ path: path.resolve(__dirname, "../../.env") });
-
-console.log("DB_NAME:", process.env.DB_NAME);
-console.log("DB_USER:", process.env.DB_USER);
-console.log("DB_PASS:", process.env.DB_PASS);
-console.log("DB_HOST:", process.env.DB_HOST);
+dotenv.config({ path: path.resolve(__dirname, "../../.env") }); //pra esse troço conseguir acessar o .env direito rodando o app dentro do src
 
 export const sequelize = new Sequelize(
   process.env.DB_NAME,

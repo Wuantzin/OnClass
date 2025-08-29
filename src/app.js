@@ -17,6 +17,10 @@ app.use(express.json());
 //rotas
 app.use("/api", routes);
 
+app.use((req, res) => {
+  res.status(404).json({ error: "Rota não encontrada" });
+});
+
 
 async function startServer() {
   try {
