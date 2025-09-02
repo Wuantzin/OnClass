@@ -16,11 +16,7 @@ export const criarAluno = async (data) => {
   return aluno.nome;
 };
 
-export const getAlunos = async () => {
-  try {
-    const alunos = await Aluno.findAll();
-    return alunos;
-  } catch (error) {
-    throw error;
-  }
+export const listarAlunos = async () => {
+  const alunos = await Aluno.findAll();
+  return alunos;
 };

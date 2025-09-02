@@ -8,3 +8,12 @@ export const criar = async (req, res) => {
     res.status(400).json(error.message );
   }
 };
+
+export const listar = async (req, res) => {
+  try {
+    const alunos = await service.listarAlunos();
+    res.status(200).json(alunos); // OK
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
