@@ -23,6 +23,14 @@ const Aluno = sequelize.define("Aluno", {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
+    },
+    curso: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    turno: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 
 });
