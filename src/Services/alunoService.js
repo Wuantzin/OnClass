@@ -1,5 +1,6 @@
 import Aluno from "../Models/Aluno.js";
 import * as Validator from "../utils/validators.js";
+import { Op } from "sequelize";
 
 export const criarAluno = async (data) => {
 
@@ -19,6 +20,29 @@ export const criarAluno = async (data) => {
 export const listarAlunos = async () => {
   const alunos = await Aluno.findAll();
   return alunos;
+};
+
+export const buscarAluno = async (filtro) => {
+  const where = {};
+
+  if (filtro.matricula) {
+    where.matricula = filtro.matricula;
+  }
+
+  if (filtro.email) {
+    where.email = filtro.email;
+  }
+
+  if (filtro.nome) {
+    where.nome = { [Op.like]: `%${filtro.nome}%` };
+  }
+
+  if (filtro.curso) {
+    where.curso = { [Op.like]: `%${filtro.curso}%` };
+  }
+
+  const aluno = await Aluno.findAll({ where });
+  return aluno;
 };
 
 export const editarAluno = async (matricula, data) => {

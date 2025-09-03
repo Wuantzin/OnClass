@@ -6,5 +6,6 @@ const alunoRoutes = express.Router();
 alunoRoutes.post("/", alunoController.criar);
 alunoRoutes.get("/", alunoController.listar);
 alunoRoutes.patch("/:matricula", alunoController.editar);
+alunoRoutes.get("/buscar", alunoController.buscar);
 
 export default alunoRoutes;

@@ -18,6 +18,16 @@ export const listar = async (req, res) => {
   }
 };
 
+export const buscar = async (req, res) => {
+  try {
+    const filtros = req.query;
+    const aluno = await service.buscarAluno(filtros);
+    res.status(200).json(aluno); // OK
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 export const editar = async (req, res) => {
   try {
     const { matricula } = req.params;
