@@ -17,3 +17,13 @@ export const listar = async (req, res) => {
     res.status(400).json(error.message);
   }
 };
+
+export const editar = async (req, res) => {
+  try {
+    const { matricula } = req.params;
+    const aluno = await service.editarAluno(matricula, req.body);
+    res.status(200).json(aluno); // OK
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};

@@ -20,3 +20,15 @@ export const listarAlunos = async () => {
   const alunos = await Aluno.findAll();
   return alunos;
 };
+
+export const editarAluno = async (matricula, data) => {
+  if (data.email) {
+  await Validator.emailValido(data.email);
+  }
+  
+  const aluno = await Aluno.findByPk(matricula);
+  if (!aluno) throw new Error("Aluno não encontrado");
+
+  await aluno.update(data);
+  return aluno;
+};
