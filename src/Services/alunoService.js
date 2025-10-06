@@ -6,7 +6,7 @@ export const criarAluno = async (data) => {
 
     data.email = data.email.toLowerCase();
 
-  await Validator.obrigatorios(data);
+  await Validator.obrigatoriosAluno(data);
 
   await Validator.emailValido(data.email);
 
@@ -47,7 +47,7 @@ export const buscarAluno = async (filtro) => {
 
 export const editarAluno = async (matricula, data) => {
   if (data.email) {
-  await Validator.emailValido(data.email);
+    await Validator.emailValido(data.email);
   }
   
   const aluno = await Aluno.findByPk(matricula);

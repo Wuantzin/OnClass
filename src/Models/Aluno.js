@@ -22,7 +22,6 @@ const Aluno = sequelize.define("Aluno", {
     DeviceId: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
     },
     curso: {
         type: DataTypes.STRING,

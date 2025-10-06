@@ -19,11 +19,7 @@ const Professor = sequelize.define("Professor", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    curso: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    turno: {
+    departamento: {
         type: DataTypes.STRING,
         allowNull: false
     }

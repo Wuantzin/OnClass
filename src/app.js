@@ -34,7 +34,7 @@ async function startServer() {
 
   try {
     // 2. Cria/sincroniza tabelas
-    await sequelize.sync( {alter: true}); // ou { alter: true }
+    await sequelize.sync( {force: true}); // ou { alter: true }
     console.log("Tabelas sincronizadas!");
   } catch (error) {
     console.error("Erro ao sincronizar tabelas:", error);
